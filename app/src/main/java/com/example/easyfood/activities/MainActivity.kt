@@ -1,9 +1,10 @@
-package com.example.easyfood
+package com.example.easyfood.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.example.easyfood.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         //Inflating the bottom navigation
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.btm_nav)
         //Instantiating/Inflating the navigation controller class
-        val navController = Navigation.findNavController(this,R.id.host_fragment)
+        val navController = Navigation.findNavController(this, R.id.host_fragment)
         //Setting up the bottom navigation with the Navigation Controller
         NavigationUI.setupWithNavController(bottomNavigation, navController)
     }
