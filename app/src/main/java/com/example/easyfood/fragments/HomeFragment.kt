@@ -1,53 +1,61 @@
 package com.example.easyfood.fragments
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders.*
+import androidx.lifecycle.get
+import com.bumptech.glide.Glide
 import com.example.easyfood.R
+import com.example.easyfood.databinding.FragmentHomeBinding
 import com.example.easyfood.pojo.Meal
 import com.example.easyfood.pojo.MealList
 import com.example.easyfood.retrofit.RetrofitInstance
+import com.example.easyfood.viewModel.HomeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeFragment : Fragment() {
-
+    //Enable view binding
+    private lateinit var binding: FragmentHomeBinding
+    //Linking the home view model
+    private lateinit var homeMvvm:HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        homeMvvm = androidx.lifecycle.ViewModelProviders.of(this)[HomeViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        //Initialize the binding variable
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList>{
-            //Means that retrofit is connected to our API
-            override fun onResponse(call: Call<MealList>, response: Response<MealList>) {
-            //Get the information of the random meal and show it in the random view
-                if (response.body() !=null){
-                    val randomMeal: Meal = response.body()!!.meals[0]
-                    Log.d("TEST", "meal id ${randomMeal.idMeal} name ${randomMeal.strMeal}")
-                }else{
-                    return
-                }
+        homeMvvm.getRandomMeal()
+        observerRandomMeal()
+    }
+
+    private fun observerRandomMeal() {
+        homeMvvm.observeRandomMealLivedata().observe(viewLifecycleOwner,object : Observer<Meal>{
+            override fun onChanged(t: Meal?) {
+                TODO("Not yet implemented")
             }
-            //Connection to the API was unsuccessful - log the error message
-            override fun onFailure(call: Call<MealList>, t: Throwable) {
-                Log.d("HomeFragment", t.message.toString())
-            }
+
         })
     }
+
 }
