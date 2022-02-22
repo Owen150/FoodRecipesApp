@@ -38,7 +38,7 @@ android {
 dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def nav_version = "2.4.1"
-    def lifecycle_version = "2.4.0-rc01"
+    def lifecycle_version = "2.2.0-rc02"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -71,7 +71,10 @@ dependencies {
     //ViewModel dependencies
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //implementation "android.arch.lifecycle:extensions:1.1.0"
 
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 }
