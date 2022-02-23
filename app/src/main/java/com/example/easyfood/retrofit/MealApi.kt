@@ -1,6 +1,7 @@
 package com.example.easyfood.retrofit
 
 import com.example.easyfood.pojo.CategoryList
+import com.example.easyfood.pojo.MealsByCategoryList
 import com.example.easyfood.pojo.MealList
 import retrofit2.Call
 import retrofit2.http.GET
@@ -17,5 +18,8 @@ interface MealApi {
 
     //To get popular items from the api
     @GET("filter.php?")
-    fun getPopularItems(@Query("c") categoryName:String) : Call<CategoryList>
+    fun getPopularItems(@Query("c") categoryName:String) : Call<MealsByCategoryList>
+
+    @GET("categories.php")
+    fun getCategories():Call<CategoryList>
 }

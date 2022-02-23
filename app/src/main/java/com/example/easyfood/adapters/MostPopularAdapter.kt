@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.easyfood.databinding.PopularItemsBinding
-import com.example.easyfood.pojo.CategoryMeals
+import com.example.easyfood.pojo.MealsByCategory
 
 class MostPopularAdapter():RecyclerView.Adapter<MostPopularAdapter.PopularMealViewHolder>() {
     //Implementing onclick listener for the popular meals items
-    lateinit var onItemClick:((CategoryMeals)->Unit)
+    lateinit var onItemClick:((MealsByCategory)->Unit)
     //Implementing the category meals-meals list
-    private var mealsList = ArrayList<CategoryMeals>()
+    private var mealsList = ArrayList<MealsByCategory>()
     //Public method for setting a meal list from outside of this class
-    fun setMeals(mealsList:ArrayList<CategoryMeals>){
-        this.mealsList = mealsList
+    fun setMeals(mealsByCategoryList:ArrayList<MealsByCategory>){
+        this.mealsList = mealsByCategoryList
         notifyDataSetChanged()  //As every time we set a meal list we want to refresh the adapter to obtain the views
     }
     //Recycler View Functions
