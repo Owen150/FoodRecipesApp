@@ -52,18 +52,16 @@ class MealActivity : AppCompatActivity() {
     }
 
     private fun observerMealDeatailsLiveData() {
-        mealMvvm.observerMealDetailsLiveData().observe(this,object : Observer<Meal>{
-            override fun onChanged(t: Meal?) {
-                onResponseCase()
-                val meal = t
+        mealMvvm.observerMealDetailsLiveData().observe(this
+        ) { t ->
+            onResponseCase()
+            val meal = t
 
-                binding.tvCategory.text = "Category : ${meal!!.strCategory}"
-                binding.tvArea.text = "Area : ${meal.strArea}"
-                binding.tvInstructionsSteps.text = meal.strInstructions
-                youtubeLink = meal.strYoutube
-            }
-
-        })
+            binding.tvCategory.text = "Category : ${meal!!.strCategory}"
+            binding.tvArea.text = "Area : ${meal.strArea}"
+            binding.tvInstructionsSteps.text = meal.strInstructions
+            youtubeLink = meal.strYoutube
+        }
     }
 
     private fun setInformationInViews() {
