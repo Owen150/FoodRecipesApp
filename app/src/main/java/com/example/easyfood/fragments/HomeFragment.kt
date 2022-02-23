@@ -28,6 +28,14 @@ class HomeFragment : Fragment() {
     //Linking the home view model
     private lateinit var homeMvvm:HomeViewModel
 
+    private lateinit var randomMeal:Meal
+
+    companion object{
+        const val MEAL_ID = "com.example.easyfood.fragments.idMeal"
+        const val MEAL_NAME = "com.example.easyfood.fragments.nameMeal"
+        const val MEAL_THUMB = "com.example.easyfood.fragments.thumbMeal"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         homeMvvm = ViewModelProvider(this).get(HomeViewModel::class.java)
@@ -44,7 +52,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         homeMvvm.getRandomMeal()
         observerRandomMeal()
         onRandomMealClick()
@@ -53,19 +60,23 @@ class HomeFragment : Fragment() {
     private fun onRandomMealClick() {
         binding.randomMealCard.setOnClickListener{
             val intent = Intent(activity,MealActivity::class.java)
+            intent.putExtra(MEAL_ID,randomMeal.idMeal)
+            intent.putExtra(MEAL_NAME,randomMeal.strMeal)
+            intent.putExtra(MEAL_THUMB,randomMeal.strMealThumb)
             startActivity(intent)
         }
     }
 
     private fun observerRandomMeal() {
-        homeMvvm.observeRandomMealLivedata().observe(viewLifecycleOwner,object : Observer<Meal>{
-            override fun onChanged(t: Meal?) {      //Will give you the meal which is stored in variable t
-                Glide.with(this@HomeFragment) //Listening to the Random meal live data variable and whenever it changes execute method
-                    .load(t!!.strMealThumb)
-                    .into(binding.imgRandomMeal)
-            }
+        homeMvvm.observeRandomMealLivedata().observe(viewLifecycleOwner
+        ) { meal ->
+            //Will give you the meal which is stored in variable t
+            Glide.with(this@HomeFragment) //Listening to the Random meal live data variable and whenever it changes execute method
+                .load(meal!!.strMealThumb)
+                .into(binding.imgRandomMeal)
 
-        })
+            this.randomMeal = meal
+        }
     }
 
 }
