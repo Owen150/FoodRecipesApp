@@ -43,7 +43,8 @@
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_search"/>
+                        android:src="@drawable/ic_search"
+                        android:contentDescription="@string/search_btn" />
 
                 </LinearLayout>
 
@@ -82,7 +83,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/accent"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/random_meal"/>
+
                 </androidx.cardview.widget.CardView>
 
                 <TextView

@@ -6,4 +6,6 @@
     <string name="tv_over">Over popular items</string>
     <string name="tv_categories">Categories</string>
     <string name="tv_home">Home</string>
+    <string name="random_meal">Random Meal Generator</string>
+    <string name="search_btn">Search Button Image</string>
 </resources>
