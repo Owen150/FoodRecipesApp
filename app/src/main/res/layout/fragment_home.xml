@@ -23,13 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
             android:fontFamily="@font/myfont"

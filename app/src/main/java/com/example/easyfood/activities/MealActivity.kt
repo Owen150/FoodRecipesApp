@@ -5,15 +5,11 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.example.easyfood.R
 import com.example.easyfood.databinding.ActivityMealBinding
 import com.example.easyfood.fragments.HomeFragment
-import com.example.easyfood.pojo.Meal
-import com.example.easyfood.viewModel.HomeViewModel
 import com.example.easyfood.viewModel.MealViewModel
 
 class MealActivity : AppCompatActivity() {
@@ -29,7 +25,7 @@ class MealActivity : AppCompatActivity() {
         binding = ActivityMealBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mealMvvm = ViewModelProvider(this).get(MealViewModel::class.java)
+        mealMvvm = ViewModelProvider(this)[MealViewModel::class.java]
 
         getMealInformationFromIntent()
 
@@ -55,12 +51,10 @@ class MealActivity : AppCompatActivity() {
         mealMvvm.observerMealDetailsLiveData().observe(this
         ) { t ->
             onResponseCase()
-            val meal = t
-
-            binding.tvCategory.text = "Category : ${meal!!.strCategory}"
-            binding.tvArea.text = "Area : ${meal.strArea}"
-            binding.tvInstructionsSteps.text = meal.strInstructions
-            youtubeLink = meal.strYoutube
+            binding.tvCategory.text = "Category : ${t!!.strCategory}"
+            binding.tvArea.text = "Area : ${t.strArea}"
+            binding.tvInstructionsSteps.text = t.strInstructions
+            youtubeLink = t.strYoutube
         }
     }
 
