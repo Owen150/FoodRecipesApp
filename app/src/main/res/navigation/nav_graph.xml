@@ -9,12 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.example.easyfood.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.easyfood.fragments.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.example.easyfood.fragments.CategoriesFragment"
