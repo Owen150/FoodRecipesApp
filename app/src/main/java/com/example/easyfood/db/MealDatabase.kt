@@ -10,7 +10,7 @@ import com.example.easyfood.pojo.Meal
 @Database(entities = [Meal::class], version = 1)
 @TypeConverters(MealTypeConverter::class)
 abstract class MealDatabase : RoomDatabase(){
-    //Instance from the MealDao Interface
+    //Instance from the MealDao Interface Class to make its functions available
     abstract fun mealDao():MealDao
     //Function to return an instance from the database class
     companion object{
