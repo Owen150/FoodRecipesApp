@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.easyfood.db.MealDatabase
 
-//creates/initializes the mealviewmodel
-class MealViewModelFactory(
+//creates/initializes the homeviewmodel
+class HomeViewModelFactory(
     private val mealDatabase: MealDatabase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MealViewModel(mealDatabase) as T
+        return HomeViewModel(mealDatabase) as T
     }
 }

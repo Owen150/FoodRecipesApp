@@ -8,4 +8,5 @@
     <string name="tv_home">Home</string>
     <string name="random_meal">Random Meal Generator</string>
     <string name="search_btn">Search Button Image</string>
+    <string name="category_name">Category Name</string>
 </resources>
