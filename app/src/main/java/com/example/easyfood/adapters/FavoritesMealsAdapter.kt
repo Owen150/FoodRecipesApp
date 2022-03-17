@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.easyfood.databinding.MealItemBinding
 import com.example.easyfood.pojo.Meal
+import com.example.easyfood.pojo.MealsByCategory
 
 class FavoritesMealsAdapter : RecyclerView.Adapter<FavoritesMealsAdapter.FavoritesMealsAdapterViewHolder>() {
 
@@ -41,12 +42,13 @@ class FavoritesMealsAdapter : RecyclerView.Adapter<FavoritesMealsAdapter.Favorit
     override fun onBindViewHolder(holder: FavoritesMealsAdapterViewHolder, position: Int) {
         //To set the information of the meal in our layout, use differ value
         val meal = differ.currentList[position]
-        Glide.with(holder.itemView).load(meal.strMealThumb).into(holder.binding.imgMeal)
+        Glide.with(holder.itemView)
+            .load(meal.strMealThumb)
+            .into(holder.binding.imgMeal)
         holder.binding.tvMealName.text = meal.strMeal
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-
 }
