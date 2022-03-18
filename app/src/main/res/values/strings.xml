@@ -9,4 +9,8 @@
     <string name="random_meal">Random Meal Generator</string>
     <string name="search_btn">Search Button Image</string>
     <string name="category_name">Category Name</string>
+    <string name="test">Test</string>
+    <string name="category_beef">Category:Beef</string>
+    <string name="area_palestine">Area:Palestine</string>
+    <string name="instructions">-Instructions :</string>
 </resources>

@@ -8,11 +8,13 @@
         android:id="@+id/img_category"
         android:layout_width="@dimen/_75sdp"
         android:layout_height="@dimen/_75sdp"
+        android:scaleType="fitCenter"
+        android:src="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:scaleType="fitCenter"
-        android:src="@color/accent"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_category_name"

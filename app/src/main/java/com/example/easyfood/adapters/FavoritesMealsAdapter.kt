@@ -13,6 +13,10 @@ import com.example.easyfood.pojo.MealsByCategory
 
 class FavoritesMealsAdapter : RecyclerView.Adapter<FavoritesMealsAdapter.FavoritesMealsAdapterViewHolder>() {
 
+    lateinit var onItemClick:((MealsByCategory)->Unit)
+
+    private var mealsList = ArrayList<MealsByCategory>()
+
     inner class FavoritesMealsAdapterViewHolder(val binding: MealItemBinding) : RecyclerView.ViewHolder(binding.root)
     //DiffUtil Gives the recycler view more performance as it acts on an individual item and not the entire list i.e Deletes and Updates one but not all
     private val diffUtil = object : DiffUtil.ItemCallback<Meal>(){
@@ -46,6 +50,10 @@ class FavoritesMealsAdapter : RecyclerView.Adapter<FavoritesMealsAdapter.Favorit
             .load(meal.strMealThumb)
             .into(holder.binding.imgMeal)
         holder.binding.tvMealName.text = meal.strMeal
+
+        holder.itemView.setOnClickListener {
+            onItemClick.invoke(mealsList[position])
+        }
     }
 
     override fun getItemCount(): Int {

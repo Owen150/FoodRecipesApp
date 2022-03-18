@@ -13,6 +13,7 @@ import com.example.easyfood.activities.MainActivity
 import com.example.easyfood.adapters.FavoritesMealsAdapter
 import com.example.easyfood.databinding.FragmentFavoritesBinding
 import com.example.easyfood.viewModel.HomeViewModel
+import com.example.easyfood.viewModel.MealViewModel
 
 
 class FavoritesFragment : Fragment() {
