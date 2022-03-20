@@ -2,16 +2,13 @@ package com.example.easyfood.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.easyfood.R
 import com.example.easyfood.adapters.CategoryMealsAdapter
 import com.example.easyfood.databinding.ActivityCategoryMealsBinding
 import com.example.easyfood.fragments.HomeFragment
 import com.example.easyfood.viewModel.CategoryMealsViewModel
-import com.example.easyfood.viewModel.MealViewModel
 
 class CategoryMealsActivity : AppCompatActivity() {
     //Create a binding instance
@@ -26,7 +23,7 @@ class CategoryMealsActivity : AppCompatActivity() {
 
         prepareRecyclerView()
 
-        categoryMealsViewModel = ViewModelProvider(this).get(CategoryMealsViewModel::class.java)
+        categoryMealsViewModel = ViewModelProvider(this)[CategoryMealsViewModel::class.java]
 
         categoryMealsViewModel.getMealsByCategory(intent.getStringExtra(HomeFragment.CATEGORY_NAME)!!)
 
