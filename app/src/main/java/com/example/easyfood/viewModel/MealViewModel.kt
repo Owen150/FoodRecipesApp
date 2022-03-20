@@ -18,6 +18,7 @@ class MealViewModel(
     val mealDatabase: MealDatabase
 ):ViewModel() {
     private var mealDetailsLiveData = MutableLiveData<Meal>()
+    private val favoritesLiveData = MutableLiveData<List<Meal>>()
 
     fun getMealDetail(id:String){
         RetrofitInstance.api.getMealDetails(id).enqueue(object : Callback<MealList>{
@@ -36,16 +37,14 @@ class MealViewModel(
     fun observerMealDeatailsLiveData():LiveData<Meal>{
         return mealDetailsLiveData
     }
-
     fun insertMeal(meal: Meal){
         viewModelScope.launch {
             mealDatabase.mealDao().upsert(meal)
         }
     }
 
-    fun deleteMeal(meal: Meal){
-        viewModelScope.launch {
-            mealDatabase.mealDao().delete(meal)
-        }
+
+    fun observeFavoritesLiveData():LiveData<List<Meal>>{
+        return  favoritesLiveData
     }
 }
