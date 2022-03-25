@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 
 
 class FavoritesFragment : Fragment() {
+
     private lateinit var binding: FragmentFavoritesBinding
     //Instance of the home view model - contains the favorite meals live data
     private lateinit var viewModel: HomeViewModel

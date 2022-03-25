@@ -19,7 +19,7 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         lifecycleScope.launchWhenCreated {
-            delay(5000L)
+            delay(3000L)
             findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
         }
         // Inflate the layout for this fragment
